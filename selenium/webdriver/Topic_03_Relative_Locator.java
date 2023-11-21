@@ -5,13 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
-public class Topic_04_Relative_Locator {
+public class Topic_03_Relative_Locator {
     WebDriver driver;
     String projectPath = System.getProperty("user.dir");
     String osName = System.getProperty("os.name");
@@ -65,5 +66,8 @@ public class Topic_04_Relative_Locator {
         List< WebElement> allLinks = driver.findElements(RelativeLocator.with(By.tagName("a")));
         System.out.println(allLinks.size());
     }
-
+    @AfterClass
+    public void afterClass() {
+        driver.quit();
+    }
 }
