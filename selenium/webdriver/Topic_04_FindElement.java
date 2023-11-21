@@ -35,22 +35,29 @@ public class Topic_04_FindElement {
     public void TC_01() {
         driver.get("https://live.techpanda.org/index.php/customer/account/login");
 
-        // Click vào myaccount ở footer
+        // Click vào MyAccount ở footer
         driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
     }
 
     @Test
-     public void TC_02( ) {
+     public void TC_02() {
         driver.get("https://live.techpanda.org/index.php/customer/account/login");
 
         // Click vào Mobile ở header
-        driver.findElement(By.xpath("//div[@id='header-nav']//a[contains(text(),'Mobile')]")).click();
+        driver.findElement(By.xpath("//div[@id='header-nav']//a[text()='Mobile']")).click();
         driver.findElement(By.xpath("//button[@title='Add to Cart'][1]")).click();
 
         String successMessageText = driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText();
         // Expected message : IPhone was added to your shopping cart.
         // Assert kết quả
         Assert.assertEquals(successMessageText,"IPhone was added to your shopping cart.");
+     }
+
+    @Test
+    public void TC_03() {
+        driver.get("https://demo.nopcommerce.com/register?returnUrl=%2F");
+        driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[starts-with(text(),'Digital')]")).click();
+
     }
 
     @AfterClass
